@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹出框</title>
+	<link rel="stylesheet" href="http://static.leke.cn/styles/common/global.css">
+	<link rel="stylesheet" type="text/css" href="css/ui-dialog.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.11.0/jquery.js"></script>
+    <script type="text/javascript" src="scripts/ui-dialog.js"></script>
+</head>
+<body>
+	<a href="javascript:;" class="u-btn" id="dialog" style="background:#f0f">弹出框</a>
+	<a href="javascript:;" class="u-btn" id="alert" style="background:#f0f">alert框</a>
+	<a href="javascript:;" class="u-btn" id="confirm" style="background:#f0f">confirm框</a>
+	<script type="text/javascript">
+	$('#dialog').on('click', function(event) {
+		event.preventDefault();
+		Dialog.create({
+			title: '菜单设置', // 对话框标题
+			size: 'sm', // 对话框尺寸，尺寸大小见上方 DIALOG_SIZES
+			tpl:'<div class="m-form">'+
+			        '<form action="" method="get" id="wen" novalidate="novalidate">'+
+			            '<ul>'+
+			                '<li class="form-item">'+
+			                    '<label for="" class="title">注意：</label>'+
+			                    '<div class="con">'+
+			                        '<span>请输入您的真实信息</span>'+
+			                    '</div>'+
+			                '</li> '+
+			            '</ul>'+
+			        '</form>'+
+			    '</div>' ,
+			btns: [{
+						className: 'btn-base btn-green',
+						text: '保存1'},
+					{className: 'btn-base btn-green',
+						text: '保存2'},
+					{className: 'btn-base btn-green',
+						text: '关闭',cb:function(){
+							this.close()
+						}}
+					]
+
+		})
+	});
+	$('#alert').on('click', function(event) {
+		event.preventDefault();
+		Dialog.alert('我是alert弹出框')
+	});
+	$('#confirm').on('click', function(event) {
+		event.preventDefault();
+		Dialog.confirm('我是confirm弹出框')
+	});
+	</script>
+</body>
+</html>
